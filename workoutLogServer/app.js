@@ -1,6 +1,8 @@
 const express= require('express')
 const app = express()
 
+app.use(require('./middleware/headers'))
+
 app.use('/api/test', function(req,res){
 	res.send ('hello world')
 })
