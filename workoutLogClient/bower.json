@@ -1,0 +1,21 @@
+{
+  "name": "workoutlogclient",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Vernon Perry <pvernon30@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Cheesyburrito30/workoutlog",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap": "boostrap#^3.3.7"
+  }
+}

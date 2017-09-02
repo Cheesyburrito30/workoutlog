@@ -2,16 +2,12 @@
   "name": "workoutlogclient",
   "version": "1.0.0",
   "main": "index.js",
+  "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node ./node_modules/http-server/bin/http-server"
   },
-  "license": "MIT",
   "devDependencies": {
     "http-server": "^0.10.0"
-  },
-  "dependencies": {
-    "bootstrap": "^3.3.7",
-    "jquery": "^3.2.1"
   }
 }
