@@ -1,10 +1,12 @@
 const express= require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const sequelize = require('./db.js')
+const User = sequelize.import('./models/user')
 
-app.listen(3000, function(){
-	console.log('Listening 3000')
-})
+User.sync() //sync({force: true}) //this drops table should we need to
+
+app.use(bodyParser.json())//will parse code and then turn it into JSON
 
 app.use(require('./middleware/headers'))
 
@@ -12,45 +14,18 @@ app.use('/api/test', function(req,res){
 	res.send ('hello world')
 })
 
-const Sequelize = require('sequelize')
-const sequelize = new Sequelize('workoutlog', 'postgres', 'VlpCartel111', {
-	host:'localhost',
-	dialect: 'postgres'
+app.listen(3000, function(){
+	console.log('Listening 3000')
 })
-
-sequelize.authenticate().then(
-	function(){
-		console.log('connected to workoutlog postgress db')
-	},
-	function(err){
-		consol.log(err)
-	}
-
-)
-//data model
-let User = sequelize.define('user', {
-	username: Sequelize.STRING,
-	passwordhash: Sequelize.STRING,
-})
-//creates table in postgres
-//
-
-User.sync()
-
-//*************************
-//WILL DESTROY YOUR LIFE. DO NOT RUN THIS LINE
-//User.sync({force: true}) //this drops table should we need to
-//*************************
-
-app.use(bodyParser.json())   //will parse code and then turn it into JSON
-
 app.post('/api/user', function(req,res){
 	let username= req.body.user.username;
 	let pass = req.body.user.password;
+	//Need to create User object and use sequelize to put it into the DB
 	User.create({
 		username: username,
 		passwordhash: ""
 	}).then(
+	//Sequelize is going to return the object it created from DB
 		function createSuccess(user){
 			res.json({
 				user: user,
