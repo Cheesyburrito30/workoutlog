@@ -36,7 +36,12 @@ let User = sequelize.define('user', {
 //
 
 User.sync()
-//User.sync({force: true}) this drops table should we need to
+
+//*************************
+//WILL DESTROY YOUR LIFE. DO NOT RUN THIS LINE
+//User.sync({force: true}) //this drops table should we need to
+//*************************
+
 app.use(bodyParser.json())   //will parse code and then turn it into JSON
 
 app.post('/api/user', function(req,res){
