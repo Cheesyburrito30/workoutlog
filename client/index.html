@@ -20,6 +20,7 @@
 			<li><a href="#history" data-toggle="tab">View History</a></li>
 			<li><a href="#" id="testAPI">Test Api</a></li>
 		</ul>
+
 		<div class="container">
 			<div class="tab-content">
 				<div class="tab-pane active" id="home">
@@ -34,6 +35,19 @@
 				</div>
 			</div>
 		</div>
+<!-- DEFINE -->
+	<div class="tab-pane" id="define">
+		<h2>Define</h2>
+		<label for="def-description">Description</label>
+		<textarea id="def-description" rows="3" class="form-control"></textarea>
+		<label for="def-logtype">Log work by</label>
+		<select id="def-logtype" class="form-control">
+			<option>Time</option>
+			<option>Weight</option>
+			<option>Reps</option>
+		</select>
+		<button class="btn btn-primary" id="def-save">Save</button>
+	</div>
 <!-- LOGIN -->
 	<div class="modal fade" id="login-modal" role="dialog">
 		<div class="modal-dialog">
@@ -80,5 +94,6 @@
 	</div>
 		<script src="./app.js"></script>
 		<script src="./user/auth.js"></script>
+		<script src="./workouts/"></script>
 	</body>
 </html>		

@@ -3,12 +3,12 @@ const express= require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const sequelize = require('./db')
-
+const User = sequelize.import('./models/user')
 
 //create table
 
-//User.sync() //sync({force: true}) //this drops table should we need to
-sequelize.sync()
+User.sync() //sync({force: true}) //this drops table should we need to
+// sequelize.sync()
 
 app.use(bodyParser.json())//will parse code and then turn it into JSON
 

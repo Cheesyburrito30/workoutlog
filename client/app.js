@@ -44,7 +44,7 @@ $(function(){
 			if ($("#signup-modal").is(":visible")) {
 				$("#signup").trigger("click")
 			}
-			if ($("#login-module").is(":visible")) {
+			if ($("#login-modal").is(":visible")) {
 				$("#login").trigger("click")
 			}
 		}
