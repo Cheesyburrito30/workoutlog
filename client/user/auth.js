@@ -6,14 +6,7 @@ $(function(){
 			let username=$('#su_username').val()
 			let password=$('#su_password').val()
 			//user object
-			let user={
-				user:{
-					username: username,
-					password: password
-				}
-			}
-		
-
+			let user={user:{username: username,password: password}}
 		//signup post
 		let signup = $.ajax({	
 				type: "POST",
@@ -34,12 +27,47 @@ $(function(){
 			$("#su_error").text("There was an issue with sign up").show()
 		})
 
-	}	
+	},
 //login method
+	login: function(){
+		let username= $("#li_username").val()
+		let password= $("#li_password").val()
+		let user = {user:{ username:username, password:password}}
+		let login = $.ajax({
+			type: 'POST',
+			url: WorkoutLog.API_BASE + "login",
+			data: JSON.stringify( user ),
+			contentType: "application/json"
+		})
+	//done/fail
+		login.done(function(data){
+			if (data.sessionToken){
+				WorkoutLog.setAuthHeader(data.sessionToken)
+			}
+			$("#login-modal").modal("hide")
+			$(".disabled").removeClass("disabled")
+			$("#loginout").text("Logout")
+		}).fail(function(){
+			$("#li_error").text("There was an issue with sign up").show()
+		})
+	},
+	//loginout method
+		logininout: function(data){
+			if (window.localStorage.getItem("sessionToken")){
+					window.localStorage.removeItem("sessionToken")
+						$("#loginout").text("Login")
+			}
+		}
 
-//loginout method
+		})
 
-	})
+	//Bind Events
+		$("#login").on("click", WorkoutLog.login)
+		$("#signup").on("click", WorkoutLog.signup)
+		$("#loginout").on("click", WorkoutLog.loginout)
 
-	$("#signup").on("click", WorkoutLog.signup)
+		if (window.localStorage.getItem("sessionToken")) {
+			$("#loginout").text("logout")
+		}
+			$("#signup").on("click", WorkoutLog.signup)
 })
