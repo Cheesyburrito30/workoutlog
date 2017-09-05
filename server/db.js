@@ -12,6 +12,6 @@ sequelize.authenticate().then(
 		consol.log(err)
 	}
 )
-var User = sequelize.import('./models/user')
+const User = sequelize.import('./models/user')
 
 module.exports = sequelize
