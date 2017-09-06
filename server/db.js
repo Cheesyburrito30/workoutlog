@@ -14,5 +14,6 @@ sequelize.authenticate().then(
 )
 const User = sequelize.import('./models/user')
 const definition = sequelize.import('./models/definition')
+const Log = sequelize.import('./models/log')
 
 module.exports = sequelize

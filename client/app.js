@@ -49,7 +49,6 @@ $(function(){
 			}
 		}
 	})
-
 	let token = window.localStorage.getItem("sessionToken")
 	if (token) {
 		WorkoutLog.setAuthHeader(token)

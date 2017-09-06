@@ -1,10 +1,11 @@
 let router = require('express').Router()
 let sequelize = require('../db')
-let Log = sequelize.import('../models/user')
+let Log = sequelize.import('../models/log')
+let User = sequelize.import('../models/user')
 let Definition = sequelize.import('../models/definition')
 
 router.post('/', function(req,res) {
-	let description = req.body.log.description
+	let description = req.body.log.desc
 	let result = req.body.log.result
 	let user = req.user
 	let definition= req.body.log.def
@@ -13,7 +14,7 @@ router.post('/', function(req,res) {
 		.create({
 			description: description,
 			result:result,
-			owner:owner,
+			owner: user.id,
 			def: definition
 		})
 		.then(

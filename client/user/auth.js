@@ -18,6 +18,8 @@ $(function(){
 		signup.done(function(data){
 			if (data.sessionToken){
 				WorkoutLog.setAuthHeader(data.sessionToken)
+				WorkoutLog.definition.fetchAll()
+				WorkoutLog.log.fetchAll()
 			}
 			$('#signup-modal').modal("hide")
 			$('.disabled').removeClass("disabled")
@@ -40,10 +42,14 @@ $(function(){
 			contentType: "application/json"
 		})
 	//done/fail
-		login.done(function(data){
-			if (data.sessionToken){
+		login.done(function(data) {
+			if (data.sessionToken) {
 				WorkoutLog.setAuthHeader(data.sessionToken)
+				WorkoutLog.definition.fetchAll()
+				WorkoutLog.log.fetchAll()
 			}
+		
+			
 			$("#login-modal").modal("hide")
 			$(".disabled").removeClass("disabled")
 			$("#loginout").text("Logout")
