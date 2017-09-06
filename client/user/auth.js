@@ -69,5 +69,4 @@ $(function(){
 		if (window.localStorage.getItem("sessionToken")) {
 			$("#loginout").text("logout")
 		}
-			$("#signup").on("click", WorkoutLog.signup)
 })

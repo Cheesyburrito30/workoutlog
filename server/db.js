@@ -9,9 +9,10 @@ sequelize.authenticate().then(
 		console.log('connected to workoutlog postgress db')
 	},
 	function(err){
-		consol.log(err)
+		console.log(err)
 	}
 )
 const User = sequelize.import('./models/user')
+const definition = sequelize.import('./models/definition')
 
 module.exports = sequelize
