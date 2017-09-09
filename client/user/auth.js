@@ -21,9 +21,11 @@ $(function(){
 				WorkoutLog.definition.fetchAll()
 				WorkoutLog.log.fetchAll()
 			}
+
 			$('#signup-modal').modal("hide")
 			$('.disabled').removeClass("disabled")
 			$('#loginout').text("Logout")
+			$("a[href='#define']").tab('show')
 			console.log("worked")
 		}).fail(function(){
 			$("#su_error").text("There was an issue with sign up").show()
@@ -48,11 +50,13 @@ $(function(){
 				WorkoutLog.definition.fetchAll()
 				WorkoutLog.log.fetchAll()
 			}
-		
-			
 			$("#login-modal").modal("hide")
 			$(".disabled").removeClass("disabled")
 			$("#loginout").text("Logout")
+			$("#li_username").val("")
+			$("#li_password").val("")
+			$("a[href='#define']").tab('show')
+
 		}).fail(function(){
 			$("#li_error").text("There was an issue with sign up").show()
 		})
